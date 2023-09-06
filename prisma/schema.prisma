@@ -44,6 +44,7 @@ model User {
   email String? @unique
   emailVerified DateTime?
   image String?
+  credits Int @default(15)
   accounts Account[]
   sessions Session[]
 }
