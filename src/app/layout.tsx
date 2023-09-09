@@ -1,7 +1,8 @@
 /** @format */
 
 import { cn } from "@/lib/utils";
-import "./globals.css";
+// import "./globals.css";
+import "./global.css";
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import Navbar from "@/components/Navbar";

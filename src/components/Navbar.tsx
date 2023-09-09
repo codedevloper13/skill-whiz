@@ -4,12 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { getAuthSession } from "@/lib/auth";
 import SignInButton from "./SignInButton";
+import UserAccountNav from "./UserAccountNav";
 
 type Props = {};
 
 const Navbar = async (props: Props) => {
 	const session = await getAuthSession();
-	console.log(session);
+
 	return (
 		<div>
 			{/* Navigation */}
@@ -20,6 +21,9 @@ const Navbar = async (props: Props) => {
 						<Image src='/SkillWhiz.png' alt='logo' width={210} height={30} unoptimized className='pt-5 pb-5' />
 					</Link>
 					<div className=' sm:flex items-center space-x-4'>
+						<Link href='/gallery' className='text-gray-500 hover:text-gray-700'>
+							Gallery
+						</Link>
 						{session?.user && (
 							<>
 								<Link href='/create' className='text-gray-500 hover:text-gray-700'>
@@ -30,7 +34,8 @@ const Navbar = async (props: Props) => {
 								</Link>
 							</>
 						)}
-						<div className='flex items-center'>{session?.user ? <p>Signed In</p> : <SignInButton />}</div>
+
+						<div className='flex items-center'>{session?.user ? <UserAccountNav user={session.user} /> : <SignInButton />}</div>
 					</div>
 				</div>
 			</nav>
